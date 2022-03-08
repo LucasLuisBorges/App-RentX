@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
-import { RFValue } from 'react-native-responsive-fontsize'
+import { RFValue } from 'react-native-responsive-fontsize';
 
 import {
   Container,
@@ -17,7 +17,7 @@ import { useNavigation } from '@react-navigation/native';
 
 
 export function Home(){
-  const navigation = useNavigation<any>()
+  const navigation = useNavigation()
 
   const carData = {
     brand: 'Audi',
@@ -30,7 +30,7 @@ export function Home(){
   }
 
   function handleCarDetails() {
-    navigation.navigate('CarDetail')
+    navigation.navigate('CarDetails')
   }
 
   return (

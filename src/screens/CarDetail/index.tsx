@@ -31,7 +31,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'react-native';
 
 export function CarDetail(){
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation();
 
   function handleConfirmRental() {
     navigation.navigate('Scheduling')

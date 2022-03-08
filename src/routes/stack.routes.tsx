@@ -9,6 +9,22 @@ import { SchedulingComplete } from '../screens/SchedulingComplete';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
+export type AppRoutes = {
+  Home: undefined;
+  CarDetails: undefined;
+  Scheduling: undefined;
+  SchedulingDetails: undefined;
+  SchedulingComplete: undefined;
+}
+
+declare global {
+  namespace ReactNavigation{
+    interface RootParamList extends AppRoutes{
+
+    }
+  }
+}
+
 export function StackRoutes() {
   return(
     <Navigator screenOptions={{ headerShown: false }}>

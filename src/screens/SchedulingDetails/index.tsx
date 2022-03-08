@@ -42,7 +42,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { useNavigation } from '@react-navigation/native';
 
 export function SchedulingDetails(){
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation();
   const theme = useTheme();
 
   function handleConfirmRental() {
