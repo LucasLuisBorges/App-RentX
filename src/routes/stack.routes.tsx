@@ -33,7 +33,7 @@ export function StackRoutes() {
         component={Home}
       />
       <Screen
-        name="CarDetail"
+        name="CarDetails"
         component={CarDetail}
       />
       <Screen
