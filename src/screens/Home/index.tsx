@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { useNavigation } from '@react-navigation/native';
+
 import { Load } from '../../components/Load';
+import { Car } from '../../components/Car';
+
+import api from '../../services/api';
+import { CarDTO } from '../../dtos/CarDTO';
+
+import  Logo from '../../assets/logo.svg';
 
 import {
   Container,
@@ -10,13 +18,6 @@ import {
   HeaderContent,
   CarList
 } from './styles';
-
-import  Logo from '../../assets/logo.svg';
-
-import { Car } from '../../components/Car';
-import { useNavigation } from '@react-navigation/native';
-import api from '../../services/api';
-import { CarDTO } from '../../dtos/CarDTO';
 
 interface NavigationProps {
   navigate:(

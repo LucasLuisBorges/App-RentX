@@ -1,11 +1,14 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+
 import { BackButton } from '../../components/BackButton';
 import { ImageSlider } from '../../components/ImageSlider';
 import { Accessory } from '../../components/Accessory';
 import { Button } from '../../components/Button';
 
 import { getAccessoryIscon } from '../../utils/getAccessoryIscon';
-
+import { CarDTO } from '../../dtos/CarDTO';
 
 import {
   Container,
@@ -23,9 +26,6 @@ import {
   Accessories,
   Footer
 } from './styles';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { StatusBar } from 'react-native';
-import { CarDTO } from '../../dtos/CarDTO';
 
 interface Params {
   car: CarDTO;

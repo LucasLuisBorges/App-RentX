@@ -1,4 +1,7 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { RFValue } from 'react-native-responsive-fontsize';
+
 import { BackButton } from '../../components/BackButton';
 import { ImageSlider } from '../../components/ImageSlider';
 import { Accessory } from '../../components/Accessory';
@@ -38,8 +41,6 @@ import {
   RentalPriceQuota,
   RentalPriceTotal
 } from './styles';
-import { RFValue } from 'react-native-responsive-fontsize';
-import { useNavigation } from '@react-navigation/native';
 
 export function SchedulingDetails(){
   const navigation = useNavigation();

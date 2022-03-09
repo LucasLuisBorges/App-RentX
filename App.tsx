@@ -10,10 +10,11 @@ import {
   Archivo_500Medium,
   Archivo_600SemiBold
 } from '@expo-google-fonts/archivo'
-import AppLoading from 'expo-app-loading';
 
-import { ThemeProvider } from 'styled-components'
+import AppLoading from 'expo-app-loading';
 import theme from './src/styles/theme';
+import { ThemeProvider } from 'styled-components'
+import { Routes } from './src/routes'
 
 import { Home } from './src/screens/Home';
 import { CarDetail } from './src/screens/CarDetail';
@@ -21,7 +22,6 @@ import { Scheduling } from './src/screens/Scheduling';
 import { SchedulingDetails } from './src/screens/SchedulingDetails';
 import { SchedulingComplete } from './src/screens/SchedulingComplete';
 
-import { Routes } from './src/routes'
 
 export default function App() {
   const [fontsLoaded] = useFonts({

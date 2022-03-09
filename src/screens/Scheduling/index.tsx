@@ -1,6 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 import { useTheme } from 'styled-components';
+import { useNavigation } from '@react-navigation/native';
 
 import { BackButton } from '../../components/BackButton';
 import { Calendar } from '../../components/Calendar';
@@ -19,8 +20,6 @@ import {
   Content,
   Footer
 } from './styles';
-import { useNavigation } from '@react-navigation/native';
-
 
 export function Scheduling(){
   const navigation = useNavigation();
