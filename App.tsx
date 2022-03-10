@@ -16,13 +16,6 @@ import theme from './src/styles/theme';
 import { ThemeProvider } from 'styled-components'
 import { Routes } from './src/routes'
 
-import { Home } from './src/screens/Home';
-import { CarDetail } from './src/screens/CarDetail';
-import { Scheduling } from './src/screens/Scheduling';
-import { SchedulingDetails } from './src/screens/SchedulingDetails';
-import { SchedulingComplete } from './src/screens/SchedulingComplete';
-
-
 export default function App() {
   const [fontsLoaded] = useFonts({
     Inter_400Regular,
