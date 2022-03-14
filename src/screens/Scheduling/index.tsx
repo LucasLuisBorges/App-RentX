@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Alert, StatusBar } from 'react-native';
 import { useTheme } from 'styled-components';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { Calendar, DayProps, generateInterval, MarkedDatesProps } from '../../components/Calendar';
 
 
 import { BackButton } from '../../components/BackButton';
-import { Calendar, DayProps, generateInterval, MarkedDatesProps } from '../../components/Calendar';
 import { Button } from '../../components/Button';
 
 import ArrowSvg from '../../assets/arrow.svg';

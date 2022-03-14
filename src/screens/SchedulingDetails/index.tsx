@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import { BackButton } from '../../components/BackButton';
@@ -8,13 +8,8 @@ import { Accessory } from '../../components/Accessory';
 import { Button } from '../../components/Button';
 import { Feather } from '@expo/vector-icons'
 import { useTheme } from 'styled-components';
-
-import speedSvg from '../../assets/speed.svg';
-import accelerationSvg from '../../assets/acceleration.svg';
-import forceSvg from '../../assets/force.svg';
-import gasolineSvg from '../../assets/gasoline.svg';
-import exchangeSvg from '../../assets/exchange.svg';
-import peopleSvg from '../../assets/people.svg';
+import { CarDTO } from '../../dtos/CarDTO';
+import { getAccessoryIscon } from '../../utils/getAccessoryIscon';
 
 import {
   Container,
@@ -41,8 +36,12 @@ import {
   RentalPriceQuota,
   RentalPriceTotal
 } from './styles';
+import { Car } from '../../components/Car';
+import { StatusBar } from 'react-native';
 
-export function SchedulingDetails(){
+export function SchedulingDetails() {
+  const route = useRoute();
+  const { car } = route.params as Params;
   const navigation = useNavigation();
   const theme = useTheme();
 
@@ -54,38 +53,50 @@ export function SchedulingDetails(){
     navigation.goBack();
   };
 
+  interface Params {
+    car: CarDTO;
+  }
+
   return (
     <Container>
+      <StatusBar
+        barStyle='dark-content'
+        backgroundColor='transparent'
+        translucent
+      />
       <Header>
         <BackButton onPress={handleBack} />
       </Header>
 
       <CarImages>
-        <ImageSlider 
-          imagesUrl={['https://cdn.wheel-size.com/automobile/body/audi-rs5-2020-2022-1613028936.4473815.png']}
+        <ImageSlider
+          imagesUrl={car.photos}
         />
       </CarImages>
 
       <Content>
         <Details>
           <Description>
-            <Brand>Lamborguini</Brand>
-            <Name>Huracan</Name>
+            <Brand>{car.brand}</Brand>
+            <Name>{car.name}</Name>
           </Description>
 
           <Rent>
-            <Period>Ao dia</Period>
-            <Price>R$ 580</Price>
+            <Period>{car.rent.period}</Period>
+            <Price>{car.rent.price}</Price>
           </Rent>
         </Details>
 
         <Acessories>
-          <Accessory name='380Km/h' icon={speedSvg} />
-          <Accessory name='3.2s' icon={accelerationSvg} />
-          <Accessory name='800 HP' icon={forceSvg} />
-          <Accessory name='Gasolina' icon={gasolineSvg} />
-          <Accessory name='Auto' icon={exchangeSvg} />
-          <Accessory name='2 pessoas' icon={peopleSvg} />
+          {
+            car.accessories.map(accessory => (
+              <Accessory
+                key={accessory.type}
+                name={accessory.name}
+                icon={getAccessoryIscon(accessory.type)}
+              />
+            ))
+          }
         </Acessories>
 
         <RentalPeriod>
@@ -103,9 +114,9 @@ export function SchedulingDetails(){
           </DateInfo>
 
           <Feather
-              name='chevron-right'
-              size={RFValue(10)}
-              color={theme.colors.text}
+            name='chevron-right'
+            size={RFValue(10)}
+            color={theme.colors.text}
           />
 
           <DateInfo>
