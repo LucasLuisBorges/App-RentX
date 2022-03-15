@@ -1,5 +1,6 @@
 import React from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { CarDTO } from "../dtos/CarDTO";
 
 import { Home } from '../screens/Home';
 import { CarDetail } from '../screens/CarDetail';
@@ -11,7 +12,10 @@ export type AppRoutes = {
   Home: undefined;
   CarDetails: undefined;
   Scheduling: undefined;
-  SchedulingDetails: undefined;
+  SchedulingDetails: {
+    car: CarDTO;
+    dates: string[];
+  };
   SchedulingComplete: undefined;
 }
 
