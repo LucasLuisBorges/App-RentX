@@ -21,6 +21,12 @@ Instale as dependencias
 yarn install
 ```
 
+Instale o Json server:
+
+```
+npm install -g json-server
+```
+
 Rode a api:
 
 ```
