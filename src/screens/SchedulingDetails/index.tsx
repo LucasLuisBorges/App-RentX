@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { TabRouter, useNavigation, useRoute } from '@react-navigation/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import { BackButton } from '../../components/BackButton';
@@ -52,6 +52,7 @@ interface Params {
 }
 
 export function SchedulingDetails() {
+  const [loading, setLoading] = useState(false)
   const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({} as RentalPeriod);
 
   const route = useRoute();
@@ -62,6 +63,8 @@ export function SchedulingDetails() {
   const rentTotal = Number(dates.length * car.rent.price)
 
   async function handleConfirmRental() {
+    setLoading(true)
+
     const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`)
 
     const unavailable_dates = [
@@ -81,7 +84,10 @@ export function SchedulingDetails() {
       unavailable_dates,
     })
     .then(() => navigation.navigate('SchedulingComplete'))
-    .catch(() => Alert.alert("Não foi possível confirmar o agendamento."))
+    .catch(() => {
+      Alert.alert("Não foi possível confirmar o agendamento.")
+      setLoading(false)
+    })
   }
 
   function handleBack() {
@@ -175,7 +181,13 @@ export function SchedulingDetails() {
       </Content>
 
       <Footer>
-        <Button title='Alugar agora' color={theme.colors.success} onPress={handleConfirmRental} />
+        <Button 
+          title='Alugar agora'
+          color={theme.colors.success}
+          onPress={handleConfirmRental}
+          disabled={loading}
+          loading={loading}
+        />
       </Footer>
 
     </Container>
