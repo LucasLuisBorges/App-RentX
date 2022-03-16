@@ -75,7 +75,7 @@ export function Home(){
               width={RFValue(108)}
             />
             <TotalCars>
-              Total de 12 carros
+              Total de {cars.length} carros
             </TotalCars>
           </HeaderContent>
         </Header>
