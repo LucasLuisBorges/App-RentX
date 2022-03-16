@@ -7,16 +7,20 @@ import { CarDetail } from '../screens/CarDetail';
 import { Scheduling } from '../screens/Scheduling';
 import { SchedulingDetails } from '../screens/SchedulingDetails';
 import { SchedulingComplete } from '../screens/SchedulingComplete';
+import { MyCars } from "../screens/MyCars";
 
 export type AppRoutes = {
   Home: undefined;
   CarDetails: undefined;
-  Scheduling: undefined;
+  Scheduling: {
+    car: CarDTO;
+  };
   SchedulingDetails: {
     car: CarDTO;
     dates: string[];
   };
   SchedulingComplete: undefined;
+  MyCars: undefined;
 }
 
 declare global {
@@ -51,6 +55,10 @@ export function StackRoutes() {
       <Screen
         name="SchedulingComplete"
         component={SchedulingComplete}
+      />
+      <Screen
+        name="MyCars"
+        component={MyCars}
       />
     </Navigator>
   )

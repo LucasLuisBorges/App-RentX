@@ -17,7 +17,7 @@ import {
 } from './styles';
 interface Props {
   data: CarDTO;
-  onPress: () => void;
+  onPress?: () => void;
 };
 
 export function Car({ data, onPress } : Props){
