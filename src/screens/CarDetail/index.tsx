@@ -34,7 +34,6 @@ import {
   Footer
 } from './styles';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import theme from '../../styles/theme';
 import { useTheme } from 'styled-components';
 
 interface Params {
@@ -50,7 +49,6 @@ export function CarDetail(){
   const scrollY = useSharedValue(0);
   const scrollHandle = useAnimatedScrollHandler(event => {
     scrollY.value = event.contentOffset.y;
-    console.log(event.contentOffset.y);
   })
 
   const headerStyleAnimation = useAnimatedStyle(() => {
@@ -99,7 +97,9 @@ export function CarDetail(){
         ]}
       >
         <Header>
-          <BackButton onPress={handleBack}/>
+          <BackButton
+            onPress={handleBack}
+          />
         </Header>
 
         <Animated.View
