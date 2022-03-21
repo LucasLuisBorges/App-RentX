@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, BackHandler } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
-import { Load } from '../../components/Load';
+import { LoadAnimation } from '../../components/LoadAnimation';
 import { Car } from '../../components/Car';
 
 import api from '../../services/api';
@@ -61,6 +61,12 @@ export function Home(){
     fetchCars();
   }, []);
 
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => {
+      return true;
+    })
+  }, []);
+
   return (
     <Container>
         <StatusBar
@@ -74,13 +80,16 @@ export function Home(){
               height={RFValue(12)}
               width={RFValue(108)}
             />
-            <TotalCars>
-              Total de {cars.length} carros
-            </TotalCars>
+            {
+              !loading &&
+              <TotalCars>
+                Total de {cars.length} carros
+              </TotalCars>
+            }
           </HeaderContent>
         </Header>
 
-        { loading ? <Load /> : 
+        { loading ? <LoadAnimation /> : 
           <CarList
             data={cars}
             keyExtractor={item => item.id}
