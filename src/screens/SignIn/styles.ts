@@ -19,6 +19,7 @@ export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.secondary_600};
   color: ${({ theme }) => theme.colors.tittle};
 `;
+
 export const Form = styled.View`
   width: 100%;
   margin: 64px 0;

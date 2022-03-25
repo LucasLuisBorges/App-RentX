@@ -10,7 +10,7 @@ import {
 interface Props {
   title: string;
   color?: string;
-  onPress: () => void;
+  onPress?: () => void;
   disabled?: boolean;
   loading?: boolean;
   light?: boolean;
