@@ -25,7 +25,13 @@ export type AppRoutes = {
   SchedulingComplete: undefined;
   MyCars: undefined;
   SignUpFirstStep: undefined;
-  SignUpEndStep: undefined;
+  SignUpEndStep: { 
+    user: { 
+      name: string; 
+      email: string; 
+      driveLicense: string; 
+    };
+  };
 }
 
 declare global {
@@ -40,7 +46,7 @@ const { Navigator, Screen } = createNativeStackNavigator();
 
 export function StackRoutes() {
   return(
-    <Navigator screenOptions={{ headerShown: false }} initialRouteName="SignUpEndStep">
+    <Navigator screenOptions={{ headerShown: false }} initialRouteName="SignUpFirstStep">
       <Screen
         name="SignIn"
         component={SignIn}

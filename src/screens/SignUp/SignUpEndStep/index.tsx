@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { 
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
+  Alert
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { BackButton } from '../../../components/BackButton';
 import { Bullet } from '../../../components/Bullet';
@@ -20,11 +21,22 @@ import {
   Form,
   FormTitle
 } from './styles';
-import theme from '../../../styles/theme';
 import { useTheme } from 'styled-components';
+
+interface Params {
+  user: {
+    name: string;
+    email: string;
+    driveLicense: string;
+  }
+}
 
 export function SignUpEndStep(){
   const navigation = useNavigation()
+  const route = useRoute()
+
+  const { user } = route.params as Params
+
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -32,6 +44,18 @@ export function SignUpEndStep(){
 
   function handleBack() {
     navigation.goBack()
+  }
+
+  function handleRegister() {
+    if(!password || !confirmPassword) {
+      return Alert.alert('Informe a senha');
+    };
+
+    if(password != confirmPassword) {
+      return Alert.alert('As senhas não conferem');
+    };
+
+    
   }
 
   return (
@@ -61,17 +85,20 @@ export function SignUpEndStep(){
             iconName='lock' 
             placeholder='Senha'
             onChangeText={setPassword}
+            value={password}
           />
           <PasswordInput 
             iconName='lock'
             placeholder='Confirmar senha'
             onChangeText={setConfirmPassword}
+            value={confirmPassword}
           />
         </Form>
 
         <Button 
           title={password && confirmPassword ? 'Cadastrar' : 'Próximo'}
           color={password && confirmPassword ? theme.colors.success : theme.colors.main}
+          onPress={handleRegister}
         />
 
       </Container>
