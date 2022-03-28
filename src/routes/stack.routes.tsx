@@ -6,7 +6,7 @@ import { Home } from '../screens/Home';
 import { CarDetail } from '../screens/CarDetail';
 import { Scheduling } from '../screens/Scheduling';
 import { SchedulingDetails } from '../screens/SchedulingDetails';
-import { SchedulingComplete } from '../screens/SchedulingComplete';
+import { Confirmation } from '../screens/Confirmation';
 import { MyCars } from "../screens/MyCars";
 import { SignIn } from "../screens/SignIn";
 import { SignUpFirstStep } from "../screens/SignUp/SignUpFirstStep";
@@ -22,7 +22,11 @@ export type AppRoutes = {
     car: CarDTO;
     dates: string[];
   };
-  SchedulingComplete: undefined;
+  Confirmation: {
+    title: string;
+    mensage: string;
+    nextScreenRoute: any;
+  };
   MyCars: undefined;
   SignUpFirstStep: undefined;
   SignUpEndStep: { 
@@ -46,7 +50,7 @@ const { Navigator, Screen } = createNativeStackNavigator();
 
 export function StackRoutes() {
   return(
-    <Navigator screenOptions={{ headerShown: false }} initialRouteName="SignUpFirstStep">
+    <Navigator screenOptions={{ headerShown: false }} initialRouteName="SignIn">
       <Screen
         name="SignIn"
         component={SignIn}
@@ -79,8 +83,8 @@ export function StackRoutes() {
         component={SchedulingDetails}
       />
       <Screen
-        name="SchedulingComplete"
-        component={SchedulingComplete}
+        name="Confirmation"
+        component={Confirmation}
       />
       <Screen
         name="MyCars"

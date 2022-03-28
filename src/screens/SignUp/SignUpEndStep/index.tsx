@@ -11,6 +11,7 @@ import { BackButton } from '../../../components/BackButton';
 import { Bullet } from '../../../components/Bullet';
 import { Button } from '../../../components/Button';
 import { PasswordInput } from '../../../components/PasswordInput';
+import { Confirmation } from '../../Confirmation';
 
 import {
   Container,
@@ -55,7 +56,11 @@ export function SignUpEndStep(){
       return Alert.alert('As senhas não conferem');
     };
 
-    
+    navigation.navigate('Confirmation', {
+      nextScreenRoute: 'SignIn',
+      title: 'Conta Criada!',
+      mensage: `Agora é só fazer login\n e aproveitar`
+    });
   }
 
   return (
