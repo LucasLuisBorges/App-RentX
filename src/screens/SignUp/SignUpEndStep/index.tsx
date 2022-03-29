@@ -6,12 +6,12 @@ import {
   Alert
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import api from '../../../services/api';
 
 import { BackButton } from '../../../components/BackButton';
 import { Bullet } from '../../../components/Bullet';
 import { Button } from '../../../components/Button';
 import { PasswordInput } from '../../../components/PasswordInput';
-import { Confirmation } from '../../Confirmation';
 
 import {
   Container,
@@ -47,7 +47,7 @@ export function SignUpEndStep(){
     navigation.goBack()
   }
 
-  function handleRegister() {
+  async function handleRegister() {
     if(!password || !confirmPassword) {
       return Alert.alert('Informe a senha');
     };
@@ -56,11 +56,24 @@ export function SignUpEndStep(){
       return Alert.alert('As senhas não conferem');
     };
 
-    navigation.navigate('Confirmation', {
-      nextScreenRoute: 'SignIn',
-      title: 'Conta Criada!',
-      mensage: `Agora é só fazer login\n e aproveitar`
+    await api.post('/users', {
+      name: user.name,
+      email: user.email,
+      driver_license: user.driveLicense,
+      password
+    })
+    .then(() => {
+      navigation.navigate('Confirmation', {
+        nextScreenRoute: 'SignIn',
+        title: 'Conta Criada!',
+        mensage: `Agora é só fazer login\n e aproveitar`
+      });
+    })
+    .catch(() => {
+      Alert.alert('Opa', 'Não foi possível cadastrar')
     });
+
+    
   }
 
   return (
