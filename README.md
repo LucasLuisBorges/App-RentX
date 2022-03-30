@@ -21,16 +21,10 @@ Instale as dependencias
 yarn install
 ```
 
-Instale o Json server:
+Antes de rodar o expo, inicie a api:
 
 ```
-npm install -g json-server
-```
-
-Rode a api:
-
-```
-yarn api
+https://github.com/LucasLuisBorges/Api-Rentx.git
 ```
 
 Rode o expo:
@@ -38,9 +32,6 @@ Rode o expo:
 ```
 expo start
 ```
-
-Para a api funcionar no seu codigo você deve entrar nos arquivos: api.ts e trocar o ipv4 para o seu e fazer o mesmo no package.json.
-
 
 ## 🛠️ Construído com
 
