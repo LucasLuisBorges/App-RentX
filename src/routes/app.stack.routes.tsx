@@ -7,6 +7,7 @@ import { CarDetail } from '../screens/CarDetail';
 import { Scheduling } from '../screens/Scheduling';
 import { SchedulingDetails } from '../screens/SchedulingDetails';
 import { Confirmation } from '../screens/Confirmation';
+import { Splash } from "../screens/Splash";
 import { MyCars } from "../screens/MyCars";
 import { SignIn } from "../screens/SignIn";
 import { SignUpFirstStep } from "../screens/SignUp/SignUpFirstStep";
@@ -36,6 +37,7 @@ export type AppRoutes = {
       driveLicense: string; 
     };
   };
+  SignIn: undefined;
 }
 
 declare global {
@@ -48,27 +50,12 @@ declare global {
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
-export function StackRoutes() {
+export function AppStackRoutes() {
   return(
-    <Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
+    <Navigator screenOptions={{ headerShown: false }} initialRouteName="Inicio">
       <Screen
-        name="SignIn"
-        component={SignIn}
-      />
-      <Screen
-        name="SignUpFirstStep"
-        component={SignUpFirstStep}
-      />
-      <Screen
-        name="SignUpEndStep"
-        component={SignUpEndStep}
-      />
-      <Screen
-        name="Home"
+        name="Inicio"
         component={Home}
-        options={{
-          gestureEnabled: false
-        }}
       />
       <Screen
         name="CarDetails"
