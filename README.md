@@ -1,59 +1,50 @@
 # App-RentX
 
-Um app desenvolvido para simular a experiencia de um usuario em um app de locação de automovel.
+An app designed to simulate a user's experience in a car rental app.
 
-## 🚀 Começando
+## 🚀 Start
 
-Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento.
+These instructions will allow you to get a working copy of the project on your local machine for development purposes.
 
 
-### 🔧 Instalação
+### 🔧 Installation
 
-Clone o projeto:
+Clone the project:
 
 ```
 git clone https://github.com/LucasLuisBorges/App-RentX.git
 ```
 
-Instale as dependencias
+install the dependencies
 
 ```
 yarn install
 ```
 
-Instale o Json server:
+Before running the expo, start the api:
 
 ```
-npm install -g json-server
+https://github.com/LucasLuisBorges/Api-Rentx.git
 ```
 
-Rode a api:
-
-```
-yarn api
-```
-
-Rode o expo:
+Run the expo:
 
 ```
 expo start
 ```
 
-Para a api funcionar no seu codigo você deve entrar nos arquivos: api.ts e trocar o ipv4 para o seu e fazer o mesmo no package.json.
-
-
-## 🛠️ Construído com
+## 🛠️ built with:
 
 * [React Native](https://reactnative.dev/) 
 * [TypeScript](https://www.typescriptlang.org/) 
 * [Expo](https://docs.expo.dev/classic/building-standalone-apps/) 
 
 
-## 🎁 Expressões de gratidão
+## 🎁 expressions of gratitude:
 
-* Conte a outras pessoas sobre este projeto 📢
-* Convide alguém da equipe para uma cerveja 🍺 
-* Obrigado publicamente 🤓.
+* Tell others about this project 📢
+* Invite someone from the team for a beer 🍺
+* Thank you publicly 🤓.
 
 ---
-⌨️ com ❤️ por Lucas Luis Borges 😊
+⌨️ with ❤️ per Lucas Luis Borges 😊
