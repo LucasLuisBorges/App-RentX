@@ -12,6 +12,8 @@ import { CarDTO } from '../../dtos/CarDTO';
 
 import  Logo from '../../assets/logo.svg';
 
+import { database } from '../../databases'
+
 import {
   Container,
   Header,
@@ -59,6 +61,16 @@ export function Home(){
 
     fetchCars();
   }, []);
+
+  useEffect(() => {
+    async function loadData() {
+      const userCollection = database.get('users');
+      const users = await userCollection.query().fetch();
+      console.log(users)
+    }
+
+    loadData();
+  },[])
 
   return (
     <Container>
